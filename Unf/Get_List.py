@@ -53,7 +53,7 @@ class de():
 		self.username = input("[*] Username > ")
 		self.password = input("[*] Password > ")
 		asede = random.choice(self.proxi)
-		konte = {'http':asede}
+		reks1 = {'http':asede}
 		mueheh = random.choice(self.agen)
 		kwon = {'User-Agent':mueheh}
 		s = requests.Session()
@@ -61,13 +61,13 @@ class de():
 		self.data1 = {'email':self.username,
  			 	 	  'pass' :self.password
 			     	 }
-		mulailogin = s.post(self.linklogin, data=self.data1, headers=kwon, proxies=konte)
+		mulailogin = s.post(self.linklogin, data=self.data1, headers=kwon, proxies=reks1)
 		atahiat = re.findall(r'<title>(.*?)</title>',mulailogin.text)
 		print (atahiat)
 		if "Facebook" in atahiat:
 			self.sukses = []
-			self.tai = input("akses => ")
-			ready = ('https://graph.facebook.com/me?fields=friends.limit(500)&access_token={}' .format(self.tai))
+			self.reks2 = input("akses => ")
+			ready = ('https://graph.facebook.com/me?fields=friends.limit(500)&access_token={}' .format(self.reks2))
 			noratan = s.get(ready).text
 			msi = json.loads(noratan)
 			self.tung = open('listID2.txt', 'w')
@@ -80,8 +80,8 @@ class de():
 					continue
 		elif " Gunakan Facebook secara Gratis di Telkomsel":
 			self.sukses = []
-			self.tai = input("akses => ")
-			ready = ('https://graph.facebook.com/me?fields=friends.limit(500)&access_token={}' .format(self.tai))
+			self.reks2 = input("akses => ")
+			ready = ('https://graph.facebook.com/me?fields=friends.limit(500)&access_token={}' .format(self.reks2))
 			noratan = s.get(ready).text
 			msi = json.loads(noratan)
 			self.tung = open('listID2.txt', 'w')
@@ -105,7 +105,7 @@ class de():
 		                  'unref':'None',
 		                  'confirm':'Konfirmasi'}
 
-			self.kondom = s.post('https://free.facebook.com/a/removefriend.php', data=self.param, headers=kwon, proxies=konte)
+			self.kondom = s.post('https://free.facebook.com/a/removefriend.php', data=self.param, headers=kwon, proxies=reks1)
 			self.anjing = (self.kondom).text
 			if 'Anda tidak lagi berteman dengan' in self.anjing:
 				print ('INFO): Unfriend Success!|{}'.format(b))
